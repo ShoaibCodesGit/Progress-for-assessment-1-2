@@ -1,0 +1,97 @@
+<template>
+ 
+    
+    <lightning-card title=" Client Side Filtering ">       
+        <div class="slds-var-p-around_medium">
+        
+            <lightning-layout>
+                <lightning-layout-item size="2" padding="around-small">
+                    <lightning-combobox
+                    name="filterBy"
+                    label="Filter By"
+                    value={filterBy}
+                    options={filterByOPtions}
+                    onchange={filterByHandler} ></lightning-combobox>
+                </lightning-layout-item>
+                <lightning-layout-item size="4" padding="around-small">
+                    <lightning-input type="text" label="Filter Contacts Data" onchange={filterHandler} ></lightning-input>
+                </lightning-layout-item>
+            </lightning-layout>
+
+
+
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered"
+                aria-labelledby="element-with-table-label other-element-with-table-label">
+                <thead>
+                    
+                    <tr class="slds-line-height_reset">
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="ID">Id</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Name">Name</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Industry">Industry</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Phone">Rating</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Rating">Phone</div>
+                        </th>                       
+                    </tr>
+                </thead>
+
+
+            <tbody>
+                <template for:each={filteredData} for:item="row" for:index="ind">
+                <tr key={row.Id} class="slds-hint-parent">
+    
+                    <!-- <th data-label="Opportunity Name" scope="row">
+                        <div class="slds-truncate" title="Cloudhub">
+                          <a href={row.id} tabindex="-1">Cloudhub</a>
+                        </div>
+                    </th> -->
+
+                    <td data-label={row.Id}>
+                        <div class="slds-truncate" title={row.Id}>{row.Id}</div>
+                    </td>
+                    <td data-label={row.Name}>
+                        <div class="slds-truncate" title={row.Name}>{row.Name}</div>
+                    </td>
+                    <td data-label={row.Title}>
+                        <div class="slds-truncate" title={row.Title}>{row.Industry}</div>
+                    </td>
+                    <td data-label={row.Email}>
+                        <div class="slds-truncate" title={row.Email}>{row.Rating}</div>
+                    </td>
+                    <td data-label={row.LeadSource}>
+                        <div class="slds-truncate" title={row.LeadSource}>{row.Phone}</div>
+                    </td>
+
+                    <!-- <td data-label="Rating">
+                        <div class="slds-truncate" title="View">
+                            <lightning-button label="View" data-id={row.Id} onclick={navigateView}></lightning-button>
+                        </div>
+                    </td> 
+                    <td data-label="Rating">
+                    <div class="slds-truncate" title="Delete">
+                        <div class="slds-var-p-around_x-small"></div>
+                        <lightning-button label="Delete" data-id={row.Id} onclick={deleteRecord}></lightning-button>
+                        
+                    </div>
+                   </td>  -->
+
+                </tr>
+            </template>
+            </tbody>
+
+        </table> 
+
+
+
+        </div>
+    </lightning-card>
+
+</template>
