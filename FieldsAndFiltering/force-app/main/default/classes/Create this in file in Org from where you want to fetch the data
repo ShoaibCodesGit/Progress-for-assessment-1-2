@@ -1,0 +1,12 @@
+@RestResource(urlMapping='/Accounts/*')
+global with sharing class GetAccounts {
+    
+    @HttpGet
+    global static list<Account> getAccounts() {
+        
+        list<Account> acclst =   [SELECT id,Name,Industry,Type,Number_Of_Open_Opportunities__c  
+                                  FROM  Account ];
+        return acclst;
+    }
+      
+}
